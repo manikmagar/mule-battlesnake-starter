@@ -1,0 +1,45 @@
+#%RAML 1.0 DataType
+type: object
+properties:
+  id:
+    type: string
+    displayName: Id
+    required: true
+    description: |
+      A unique identifier for this Game.
+    examples:
+      Ex1: totally-unique-game-id
+  ruleset:
+    type: !include ruleset.raml
+    displayName: Ruleset
+    description: |
+      Information about the ruleset being used to run this game. 
+    required: true
+  map:
+    type: string
+    displayName: map
+    description: |
+      The name of the map used to populate the game board with snakes, food, and hazards.
+    examples:
+      Ex1: "standard"
+  timeout:
+    type: number
+    displayName: Timeout
+    required: true
+    description: | 
+      How much time your snake has to respond to requests for this Game.
+    examples:
+      Ex1: 500
+  source:
+    enum: 
+      - tournament
+      - league
+      - arena
+      - challenge
+      - custom
+    displayName: Source
+    required: true
+    description: |
+      The source of this game.
+    examples:
+      Ex1: league

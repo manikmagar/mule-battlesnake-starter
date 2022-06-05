@@ -1,0 +1,60 @@
+#%RAML 1.0 DataType
+type: object
+displayName: Settings
+properties:
+  foodSpawnChance:
+    type: number
+    displayName: Food Spawn Chance
+    required: true
+    description: |
+      Percentage chance of spawning a new food every round.
+    examples:
+      Ex1: 25
+  minimumFood:
+    type: number
+    displayName: Minimum Food
+    required: true
+    description: |
+      Minimum food to keep on the board every turn.
+    examples:
+      Ex1: 1
+  hazardDamagePerTurn:
+    type: number
+    displayName: Hazard Damage Per Turn
+    required: true
+    description: |
+      Health damage a snake will take when ending its turn in a hazard. This stacks on top of the regular 1 damage a snake takes per turn.
+    examples:
+      Ex1: 14
+  hazardMap:
+    type: string
+    displayName: Hazard Map
+    required: true
+    description: |
+      A string identifier that describes the type of hazard map that is used in the game. 
+  hazardMapAuthor:
+    type: string
+    displayName: Hazard Map author
+    required: true
+    description: |
+      A string with the username of the hazard map's author. map that is used in the game. 
+  royale:
+    type: !include rulesetSettingsRoyale.raml
+    displayName: Royale
+    required: true
+  squad:
+    type: !include rulesetSettingsSquad.raml
+    displayName: Squad
+    required: true
+examples:
+  Ex1:
+    foodSpawnChance: 25
+    minimumFood: 1
+    hazardDamagePerTurn: 14
+    royale:
+      shrinkEveryNTurns: 5
+    squad:
+      allowBodyCollisions: true
+      sharedElimination: true
+      sharedHealth: true
+      sharedLength: true

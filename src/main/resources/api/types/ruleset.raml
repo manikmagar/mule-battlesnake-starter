@@ -1,0 +1,35 @@
+#%RAML 1.0 DataType
+type: object
+displayName: Ruleset
+properties:
+  name:
+    type: string
+    displayName: Name
+    required: true
+    description: |
+      Name of the ruleset being used to run this game. Possible values include: standard, solo, royale, squad, constrictor, wrapped. See Game Modes for more information on each ruleset.
+    examples:
+      Ex1: "standard"
+  version:
+    type: string
+    displayName: Version
+    required: true
+    description: |
+      The release version of the Rules module used in this game.
+    examples:
+      Ex1: "v1.2.3"
+  settings:
+    type: !include rulesetSettings.raml
+    displayName: Settings
+    description: |
+      A collection of specific settings being used by the current game that control how the rules are applied.
+    required: false
+        
+examples:
+  Ex1:
+    name: "standard"
+    version: "v1.2.3"
+
+      
+  
+

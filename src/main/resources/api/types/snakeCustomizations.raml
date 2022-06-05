@@ -1,0 +1,34 @@
+#%RAML 1.0 DataType
+displayName: Customizations
+description: | 
+  The collection of customizations applied to this Battlesnake that represent how it is viewed. 
+properties:
+  color:
+    type: string
+    displayName: Color
+    required: false
+    description: |
+      Hex color code used to display this Battlesnake. Must start with "#" and be 7 characters long.
+    examples:
+      Ex1: "#888888"
+  head:
+    type: string
+    displayName: Head
+    required: true
+    description: |
+      Displayed head of this Battlesnake. See Personalization Docs for available options.
+    examples:
+      Ex1: "default"
+  tail:
+    type: string
+    displayName: Tail
+    required: false
+    description: |
+      Displayed tail of this Battlesnake. See Personalization Docs for available options.
+    examples:
+      Ex1: "default"
+examples:
+  Ex1:
+    color: "#888888"
+    head: "default"
+    tail: "default" 
