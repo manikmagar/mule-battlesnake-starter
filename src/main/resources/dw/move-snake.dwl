@@ -17,21 +17,18 @@ var myNeckLocation = neck match {
 	else -> ''
 }
 
-		// TODO: Step 1 - Don't hit walls.
-	    // Use information from `payload` and `head` to not move beyond the game board.
-	    // board = data['board']
-	    // board_height = ?
-	    // board_width = ?
-	
-	    // TODO: Step 2 - Don't hit yourself.
-	    // Use information from `body` to avoid moves that would collide with yourself.
-	
-	    // TODO: Step 3 - Don't collide with others.
-	    // Use information from `payload` to prevent your Battlesnake from colliding with others.
-	
-	    // TODO: Step 4 - Find food.
-	    // Use information in `payload` to seek out and find food.
-	    // food = board.food
+// TODO: Step 1 - Don't hit walls.
+// Use information from `board` and `head` to not move beyond the game board.
+
+// TODO: Step 2 - Don't hit yourself.
+// Use information from `body` to avoid moves that would collide with yourself.
+
+// TODO: Step 3 - Don't collide with others.
+// Use information from `payload` to prevent your Battlesnake from colliding with others.
+
+// TODO: Step 4 - Find food.
+// Use information in `payload` to seek out and find food.
+// food = board.food
 
 
 // Find safe moves by eliminating neck location and any other locations computed in above steps
