@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.javastreets</groupId>
@@ -12,9 +14,14 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-		<app.runtime>4.4.0-20211227</app.runtime>
+		<app.runtime>4.4.0</app.runtime>
 		<mule.maven.plugin.version>3.5.2</mule.maven.plugin.version>
+		<!-- Define CH app prefix to be unique before deploying to CH -->
+		<cloudhub.app.prefix>mms</cloudhub.app.prefix>
+		<region>us-east-1</region>
+		<workers>1</workers>
+		<workerType>MICRO</workerType>
+		<environment>Sandbox</environment>
 	</properties>
 
 	<build>
@@ -29,6 +36,21 @@
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
+				<configuration>
+					<cloudHubDeployment>
+						<uri>https://anypoint.mulesoft.com</uri>
+						<muleVersion>${app.runtime}</muleVersion>
+						<username>${ANYPOINT_USER}</username>
+						<password>${ANYPOINT_PASSWORD}</password>
+						<applicationName>${cloudhub.app.prefix}-${project.artifactId}</applicationName>
+						<environment>${environment}</environment>
+						<region>${region}</region>
+						<workers>${workers}</workers>
+						<workerType>${workerType}</workerType>
+						<applyLatestRuntimePatch>true</applyLatestRuntimePatch>
+						<objectStoreV2>true</objectStoreV2>
+					</cloudHubDeployment>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
