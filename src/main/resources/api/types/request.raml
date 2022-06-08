@@ -1,0 +1,16 @@
+#%RAML 1.0 DataType
+type: object
+description: Rquest payload received from game engine
+properties:
+  game: 
+    type: !include game.raml
+    description: Game Object describing the game being played
+  turn:
+    type: number
+    description: Turn number of the game being played (0 for new games)
+  board:
+    type: !include board.raml
+    description: Board Object describing the initial state of the game board
+  you:
+    type: !include battlesnake.raml
+    description: Battlesnake Object describing your Battlesnake

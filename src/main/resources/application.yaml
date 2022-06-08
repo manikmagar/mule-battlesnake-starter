@@ -1,0 +1,8 @@
+battlesnake:
+  config:
+    "apiversion": "1"
+    "author": "mmsonline"
+    "color" : "#888888"
+    "head" : "default"
+    "tail" : "default"
+    "version" : "0.0.1-beta"

@@ -1,0 +1,119 @@
+#%RAML 1.0 DataType
+type: object
+displayName: Battlenake
+properties:
+  id:
+    type: string
+    displayName: Id
+    required: true
+    description: |
+      Unique identifier for this Battlesnake in the context of the current Game.
+    examples:
+      Ex1: totally-unique-snake-id
+  name:
+    type: string
+    displayName: Name
+    required: true
+    description: |
+      Name given to this Battlesnake by its author.
+    examples:
+      Ex1: Sneky McSnek Face
+  health:
+    type: number
+    displayName: Health
+    required: true
+    description: |
+      Health value of this Battlesnake, between 0 and 100 inclusively.
+    examples:
+      Ex1: 54
+  body:
+    type: array
+    displayName: Body
+    required: true
+    description: |
+      Array of coordinates representing this Battlesnake's location on the game board. This array is ordered from head to tail.
+    items: !include coordinate.raml
+    examples:
+      Ex1:
+        -
+          x: 0
+          y: 0
+        -
+          x: 1
+          y: 0
+        -
+          x: 2
+          y: 0
+  latency:
+    type: string
+    displayName: Latency
+    required: true
+    description: |
+      The previous response time of this Battlesnake, in milliseconds. "0" means the Battlesnake timed out and failed to respond.
+    examples:
+      Ex1: "123"
+  head:
+    type: !include coordinate.raml
+    displayName: Head
+    required: true
+    description: |
+      Coordinates for this Battlesnake's head. Equivalent to the first element of the body array.
+    examples:
+      Ex1:
+        x: 0
+        y: 0
+  length:
+    type: number
+    displayName: Length
+    required: true
+    description: |
+      Length of this Battlesnake from head to tail. Equivalent to the length of the body array.
+    examples:
+      Ex1: 3
+  shout:
+    type: string
+    displayName: Shout
+    required: true
+    description: |
+      Message shouted by this Battlesnake on the previous turn.
+    examples:
+      Ex1: why are we shouting??
+  squad:
+    type: string
+    displayName: Squad
+    required: true
+    description: |
+      The squad that the Battlesnake belongs to. Used to identify squad members in Squad Mode games.
+    examples:
+      Ex1: "1"
+  customizations:
+    type: !include snakeCustomizations.raml
+    displayName: Customizations
+    
+  
+examples:
+  Ex1:
+    id: totally-unique-snake-id
+    name: Sneky McSnek Face
+    health: 54
+    body:
+      -
+        x: 0
+        y: 0
+      -
+        x: 1
+        y: 0
+      -
+        x: 2
+        y: 0
+    latency: "123"
+    head:
+      x: 0
+      y: 0
+    length: 3
+    shout: why are we shouting??
+    squad: "1"
+    customizations:
+      color: "#888888"
+      head: "default"
+      tail: "default" 

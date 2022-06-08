@@ -1,0 +1,63 @@
+#%RAML 1.0 DataType
+type: object
+displayName: Board
+properties:
+  height:
+    type: number
+    displayName: Height
+    required: true
+    description: |
+      The number of rows in the y-axis of the game board.
+    examples:
+      Ex1: 11
+  width:
+    type: number
+    displayName: Width
+    required: true
+    description: |
+      The number of columns in the x-axis of the game board.
+    examples:
+      Ex1: 11
+  food:
+    type: array
+    displayName: Food
+    required: true
+    description: |
+      Array of coordinates representing food locations on the game board.
+    items: !include coordinate.raml
+    examples:
+      Ex1:
+        -
+          x: 5
+          y: 5
+        -
+          x: 9
+          y: 0
+        -
+          x: 2
+          y: 6
+  hazards:
+    type: array
+    displayName: Hazards
+    required: true
+    description: |
+      Array of coordinates representing hazardous locations on the game board. These will only appear in some game modes.
+    items: !include coordinate.raml
+    examples:
+      Ex1:
+        -
+          x: 0
+          y: 0
+        -
+          x: 0
+          y: 1
+        -
+          x: 0
+          y: 2
+  snakes:
+    type: array
+    displayName: Snakes
+    required: true
+    description: |
+      Array of Battlesnake objects representing all Battlesnakes remaining on the game board (including yourself if you haven't been eliminated).
+    items: !include battlesnake.raml

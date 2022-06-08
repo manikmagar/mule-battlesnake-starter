@@ -1,0 +1,42 @@
+#%RAML 1.0 DataType
+type: object
+displayName: Squad
+properties:
+  allowBodyCollisions:
+    type: boolean
+    displayName: Allow Body Collisions
+    required: true
+    description: |
+      In Squad mode, allow members of the same squad to move over each other without dying.
+    examples:
+      Ex1: true
+  sharedElimination:
+    type: boolean
+    displayName: Shared Elimination
+    required: true
+    description: |
+      In Squad mode, all squad members are eliminated when one is eliminated.
+    examples:
+      Ex1: true
+  sharedHealth:
+    type: boolean
+    displayName: Shared Health
+    required: true
+    description: |
+      In Squad mode, all squad members share health.
+    examples:
+      Ex1: true
+  sharedLength:
+    type: boolean
+    displayName: Shared Length
+    required: true
+    description: |
+      In Squad mode, all squad members share length.
+    examples:
+      Ex1: true
+examples:
+  Ex1:
+    allowBodyCollisions: true
+    sharedElimination: true
+    sharedHealth: true
+    sharedLength: true

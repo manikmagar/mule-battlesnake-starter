@@ -1,0 +1,61 @@
+#%RAML 1.0 DataType
+type: object
+displayName: API Config
+properties:
+  apiversion:
+    type: string
+    displayName: Apiversion
+    required: true
+    default: "1"
+    description: |
+      Version of the Battlesnake API implemented by this Battlesnake. Currently only API version 1 is valid.
+    examples:
+      Ex1: "1"
+  author:
+    type: string
+    displayName: Author
+    required: false
+    description: |
+      Username of the author of this Battlesnake. If provided, this will be used to verify ownership.
+    examples:
+      Ex1: "MyUsername"
+  color:
+    type: string
+    displayName: Color
+    required: false
+    description: |
+      Hex color code used to display this Battlesnake. Must start with "#" and be 7 characters long.
+    examples:
+      Ex1: "#888888"
+  head:
+    type: string
+    displayName: Head
+    required: true
+    description: |
+      Displayed head of this Battlesnake. See Personalization Docs for available options.
+    examples:
+      Ex1: "default"
+  tail:
+    type: string
+    displayName: Tail
+    required: false
+    description: |
+      Displayed tail of this Battlesnake. See Personalization Docs for available options.
+    examples:
+      Ex1: "default"
+  version:
+    type: string
+    displayName: Version
+    required: false
+    description: |
+      A version number or tag for your snake.
+    examples:
+      Ex1: "0.0.1-beta"
+examples:
+  Ex1:
+    apiversion: "1"
+    author: MyUsername
+    color: "#888888"
+    head: "default"
+    tail: "default"
+    version: 0.0.1-beta

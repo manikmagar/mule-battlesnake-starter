@@ -1,0 +1,56 @@
+#%RAML 1.0
+title: Battlesnake API
+version: v1
+baseUri: /{version}
+uses:
+  lib: lib.raml
+
+mediaType: 
+- application/json
+
+/:
+  get:
+    displayName: Get API Config
+    description: |
+      Called by game engine for customization, checking latency, and verifying successful communications between the Battlesnake and the Battlesnake Engine.
+    responses:
+      200:
+        body:
+          application/json:
+            type: lib.apiConfig
+/start:
+  post:
+    displayName: Start a Game
+    description: Receive a start request when Battlesnake enters a new game. Every game has a unique ID that can be used to allocated resources or data you may need. Battlesnake game server ignores the response of this request.
+    body:
+      application/json:
+        type: lib.request
+    responses:
+      200:
+        description: Responses to this command are ignored by the game engine
+/move:
+  post:
+    displayName: Snake move
+    description: Receive request for every turn of the game. Use the information provided to determine how your Battlesnake will move on that turn, either up, down, left, or right
+    body:
+      application/json:
+        type: lib.request
+    responses:
+      200:
+        body:
+          application/json:
+            type: lib.moveResponse
+/end:
+  post:
+    displayName: End a Game
+    description: Receive this request whenever a game it was playing has ended. Use it to learn how your Battlesnake won or lost and deallocate any server-side resources. Your response to this request will be ignored.
+    body:
+      application/json:
+        type: lib.request
+    responses:
+      200:
+        description: Responses to this command are ignored by the game engine
+
+
+
+
