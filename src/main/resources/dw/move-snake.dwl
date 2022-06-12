@@ -13,7 +13,7 @@ var myNeckLocation = neck match {
 	case neck if neck.x < head.x -> "left" //my neck is on the left of my head
 	case neck if neck.x > head.x -> "right" //my neck is on the right of my head
 	case neck if neck.y < head.y -> "down" //my neck is below my head
-	case neck if neck.y < head.y -> "up"	//my neck is above my head
+	case neck if neck.y > head.y -> "up"	//my neck is above my head
 	else -> ''
 }
 
