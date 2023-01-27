@@ -10,22 +10,33 @@ The [Quick Start Coding Guide](https://docs.battlesnake.com/guides/getting-start
 ### Prerequisites
 
 * A free [Battlesnake Account](https://play.battlesnake.com/?utm_source=github&utm_medium=readme&utm_campaign=mule_battlesnake&utm_content=homepage)
-* [Anypoint Studio](https://www.mulesoft.com/lp/dl/studio) for local development
-* Mule Runtime
-* [Anypoint Platform account](https://anypoint.mulesoft.com/) for deploying to Cloudhub
+* Java JDK 1.8.0 or JDK 11
+* [Download and install Anypoint Studio](https://docs.mulesoft.com/studio/7.14/to-download-and-install-studio) for local development
+* Mule Runtime, available embedded in Anypoint Studio
+* [Anypoint Platform account](https://anypoint.mulesoft.com/) if deploying to Cloudhub
+* Understand the basics of Anypoint Studio - Watch [YouTube: Build your first Hello Mule application](https://www.youtube.com/watch?v=KkmLvZ20rf8)
 
 
 ## Running Your Battlesnake in local Anypoint Studio
 
 1. Fork and clone this repo
-2. Import this project in Anypoint Studio
+2. [Import this project](https://docs.mulesoft.com/studio/7.11/import-export-packages#import-a-mule-application-project-from-file-system) in Anypoint Studio
 3. Run mule-battlesnake mule application. This will expose API at http://localhost:8081/api that you can use for creating battlesnakes.
 4. Expose local http to internet with [ngrok](https://ngrok.com/) or similar tools.
 5. Follow Battlesnake [quickstart quide](https://docs.battlesnake.com/guides/getting-started#step-4-create-your-battlesnake) to create your battlesnake and play
 
+
+*NOTE:* MuleSoft Community Twitch hosted a few live sessions demonstrating this starter and how to work with it. The first one introducing this starter project can be found on Twitch [here](https://www.twitch.tv/videos/1510344100).
+
 ## Deploying to Cloudhub
 
-Project's POM is configured for deploying to Cloudhub using [Mule Maven Plugin](https://docs.mulesoft.com/mule-runtime/4.4/deploy-to-cloudhub#configure-the-cloudhub-deployment-strategy). See the mule-maven-plugin configuration in pom.xml. Set appropriate values for properties and run `mvn deploy -DmuleDeploy`.
+Project's POM is configured for deploying to Cloudhub using [Mule Maven Plugin](https://docs.mulesoft.com/mule-runtime/4.4/deploy-to-cloudhub#configure-the-cloudhub-deployment-strategy). See the mule-maven-plugin configuration in pom.xml.
+
+Set your Anypoint Credentials as environment variables with below keys on your terminal - 
+- ANYPOINT_USER
+- ANYPOINT_PASSWORD
+
+Run `mvn deploy -DmuleDeploy` to trigger the deployment.
 
 Once deployed to Cloudhub, use application's URL `https://{ch-app-name}.{region}.cloudhub.io/api` to create your battlesnake.
  
@@ -51,8 +62,13 @@ Whenever you update these values, go to the page for your Battlesnake and select
 
 On every turn of each game your Battlesnake receives information about the game board and must decide its next move. Possible moves are "up", "down", "left", or "right" and initially your Battlesnake will choose a move randomly. Your goal as a developer is to read information sent to you about the game (available in the `payload`) and decide where your Battlesnake should move next. All your Battlesnake logic lives in [/src/main/resources/dw/move-snake.dwl](./src/main/resources/dw/move-snake.dwl), and this is the code you will want to edit.
 
-See the [Battlesnake Game Rules](https://docs.battlesnake.com/references/rules) for more information on playing the game, moving around the board, and improving your algorithm.
+The snake algorithm in this project is written using [DataWeave](https://docs.mulesoft.com/dataweave/2.4/dataweave-quickstart) language. While building the game, we will learn about Mule APIs and data transformation using DataWeave. Following are some good resources to learn more about DataWeave -
 
+- [MuleSoft Docs: DataWeave Quickstart](https://docs.mulesoft.com/dataweave/2.4/dataweave-quickstart)
+- [MuleSoft Docs: DataWeave Cookbook](https://docs.mulesoft.com/dataweave/2.4/dataweave-cookbook)
+- [DataWeave Playground and Tutorial](https://dataweave.mulesoft.com/learn/tutorial)
+
+See the [Battlesnake Game Rules](https://docs.battlesnake.com/references/rules) for more information on playing the game, moving around the board, and improving your algorithm.
 
 ## Playing Battlesnake
 
