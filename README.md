@@ -19,7 +19,7 @@ The [Quick Start Coding Guide](https://docs.battlesnake.com/guides/getting-start
 
 ## Running Your Battlesnake in local Anypoint Studio
 
-1. Fork and clone this repo
+1. This starter project a Github Template Repository. Click "Use this template" button on top or [Click here](https://github.com/manikmagar/mule-battlesnake-starter/generate) to create a new project using this template.
 2. [Import this project](https://docs.mulesoft.com/studio/7.11/import-export-packages#import-a-mule-application-project-from-file-system) in Anypoint Studio
 3. Run mule-battlesnake mule application. This will expose API at http://localhost:8081/api that you can use for creating battlesnakes.
 4. Expose local http to internet with [ngrok](https://ngrok.com/) or similar tools.
