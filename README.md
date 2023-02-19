@@ -21,6 +21,7 @@ The [Quick Start Coding Guide](https://docs.battlesnake.com/guides/getting-start
 
 1. This starter project a Github Template Repository. Click "Use this template" button on top or [Click here](https://github.com/manikmagar/mule-battlesnake-starter/generate) to create a new project using this template.
 2. [Import this project](https://docs.mulesoft.com/studio/7.11/import-export-packages#import-a-mule-application-project-from-file-system) in Anypoint Studio
+3. Set CLOUDHUB_APP_PREFIX property value in pom.xml  
 3. Run mule-battlesnake mule application. This will expose API at http://localhost:8081/api that you can use for creating battlesnakes.
 4. Expose local http to internet with [ngrok](https://ngrok.com/) or similar tools.
 5. Follow Battlesnake [quickstart quide](https://docs.battlesnake.com/guides/getting-started#step-4-create-your-battlesnake) to create your battlesnake and play
@@ -43,9 +44,13 @@ Once deployed to Cloudhub, use application's URL `https://{ch-app-name}.{region}
 ### Enabling Github Actions
 The template includes a GitHub Actions workflow [./.github/workflows/build.yml](./.github/workflows/build.yml) to deploy to CloudHub. 
 
-To successfully deploy using GitHub Actions, you must add following two Actions Secrets for your Anypoint Credentials - 
-- anypoint_platform_username
-- anypoint_platform_password
+To successfully deploy using GitHub Actions:
+
+- Add following [GitHub Actions Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository) - 
+  - anypoint_platform_username
+  - anypoint_platform_password
+- Add following [GitHub Actions Variable](https://docs.github.com/en/actions/learn-github-actions/variables#creating-configuration-variables-for-a-repository) -
+  - CLOUDHUB_APP_PREFIX
 
 Once configured, Commits to `main` branch will deploy application to your CloudHub.
  
