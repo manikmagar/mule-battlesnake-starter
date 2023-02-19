@@ -22,7 +22,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B package --file pom.xml -DskipMunitTests
+      run: mvn -B package --file pom.xml -DskipMunitTests -DCLOUDHUB_APP_PREFIX=${CLOUDHUB_APP_PREFIX}
     - name: Stamp artifact file name with commit hash
       run: |
         artifactName1=$(ls target/*.jar | head -1)
@@ -39,4 +39,5 @@ jobs:
         mvn mule:deploy \
          -Dmule.artifact=$artifactName \
          -Danypoint.username="$USERNAME" \
-         -Danypoint.password="$PASSWORD"
+         -Danypoint.password="$PASSWORD" \
+         -DCLOUDHUB_APP_PREFIX=${CLOUDHUB_APP_PREFIX}
