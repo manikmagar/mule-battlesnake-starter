@@ -14,8 +14,8 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<app.runtime>4.4.0</app.runtime>
 		<mule.maven.plugin.version>3.5.4</mule.maven.plugin.version>
-		<!-- Define CH app prefix to be unique before deploying to CH -->
-		<cloudhub.app.prefix>mms</cloudhub.app.prefix>
+		<!--TODO: Define CH app prefix to be unique before deploying to CH -->
+		<CLOUDHUB_APP_PREFIX></CLOUDHUB_APP_PREFIX>
 		<region>us-east-1</region>
 		<workers>1</workers>
 		<workerType>MICRO</workerType>
@@ -40,7 +40,7 @@
 						<muleVersion>${app.runtime}</muleVersion>
 						<username>${ANYPOINT_USER}</username>
 						<password>${ANYPOINT_PASSWORD}</password>
-						<applicationName>${cloudhub.app.prefix}-${project.artifactId}</applicationName>
+						<applicationName>${CLOUDHUB_APP_PREFIX}-${project.artifactId}</applicationName>
 						<environment>${environment}</environment>
 						<region>${region}</region>
 						<workers>${workers}</workers>
@@ -49,6 +49,30 @@
 						<objectStoreV2>true</objectStoreV2>
 					</cloudHubDeployment>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<version>3.2.1</version>
+				<executions>
+					<execution>
+						<id>enforce-property</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<requireProperty>
+									<property>CLOUDHUB_APP_PREFIX</property>
+									<message>"CloudHub app name must be unique. 'CLOUDHUB_APP_PREFIX' property must be specified to avoid name collision."</message>
+									<regex>^([A-Za-z0-9\-]+)$</regex>
+									<regexMessage>"Property 'CLOUDHUB_APP_PREFIX' can only contain letters, numbers, and dashes"</regexMessage>
+								</requireProperty>
+							</rules>
+							<fail>true</fail>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
