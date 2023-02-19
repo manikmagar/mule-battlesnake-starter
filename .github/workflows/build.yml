@@ -7,9 +7,6 @@ on:
   pull_request:
     branches: [ "main" ]
 
-env: 
-  CLOUDHUB_APP_PREFIX: ${GITHUB_REPOSITORY_OWNER_ID} 
-
 jobs:
   build:
     runs-on: ubuntu-latest
