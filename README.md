@@ -39,6 +39,15 @@ Set your Anypoint Credentials as environment variables with below keys on your t
 Run `mvn deploy -DmuleDeploy` to trigger the deployment.
 
 Once deployed to Cloudhub, use application's URL `https://{ch-app-name}.{region}.cloudhub.io/api` to create your battlesnake.
+
+### Enabling Github Actions
+The template includes a GitHub Actions workflow [./.github/workflows/build.yml](./.github/workflows/build.yml) to deploy to CloudHub. 
+
+To successfully deploy using GitHub Actions, you must add following two Actions Secrets for your Anypoint Credentials - 
+- anypoint_platform_username
+- anypoint_platform_password
+
+Once configured, Commits to `main` branch will deploy application to your CloudHub.
  
 ## Customizing Your Battlesnake
 
